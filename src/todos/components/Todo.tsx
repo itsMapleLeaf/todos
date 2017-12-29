@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { StoreConsumer } from '../../storeContext'
+import { StoreConsumer } from '../../app/storeContext'
 import { TodoModel } from '../types'
 
 type Props = {

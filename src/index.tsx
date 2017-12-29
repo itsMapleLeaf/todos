@@ -1,10 +1,10 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 
-import { App } from './App'
-import { applyGlobalStyles } from './globalStyles'
-import { dispatch, store } from './store'
-import { StoreProvider } from './storeContext'
+import { App } from './app/App'
+import { applyGlobalStyles } from './app/globalStyles'
+import { dispatch, store } from './app/store'
+import { StoreProvider } from './app/storeContext'
 
 function render() {
   const root = (
@@ -12,16 +12,16 @@ function render() {
       <App />
     </StoreProvider>
   )
-
   ReactDOM.render(root, document.getElementById('root'))
+
+  applyGlobalStyles()
 }
 
 render()
 store.subscribe(render)
-applyGlobalStyles()
 
 if (module.hot) {
-  module.hot.accept('./App', render)
+  module.hot.accept('./app/App', render)
 }
 
 dispatch({ type: 'ADD_TODO', text: 'do a thing' })

@@ -1,7 +1,7 @@
 import { Field, Form, Formik, FormikActions, FormikProps } from 'formik'
 import * as React from 'react'
 
-import { StoreConsumer } from '../../storeContext'
+import { StoreConsumer } from '../../app/storeContext'
 
 type FormValues = { newTodoText: string }
 

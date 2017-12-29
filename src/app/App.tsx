@@ -1,7 +1,7 @@
 import * as React from 'react'
 
-import { TodoActions } from './todos/components/TodoActions'
-import { TodoList } from './todos/components/TodoList'
+import { TodoActions } from '../todos/components/TodoActions'
+import { TodoList } from '../todos/components/TodoList'
 
 export function App() {
   return (

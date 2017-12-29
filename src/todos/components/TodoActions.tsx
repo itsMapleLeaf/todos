@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-import { StoreConsumer } from '../../storeContext'
+import { StoreConsumer } from '../../app/storeContext'
 import { NewTodoForm } from './NewTodoForm'
 
 export function TodoActions() {
