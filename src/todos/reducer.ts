@@ -14,5 +14,9 @@ export function todosReducer(prevState: TodoState, action: TodoAction): TodoStat
         todo.done = !todo.done
       }
     }
+
+    if (action.type === 'CLEAR_FINISHED_TODOS') {
+      state.todos = state.todos.filter(t => !t.done)
+    }
   })
 }

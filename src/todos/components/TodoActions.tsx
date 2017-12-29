@@ -16,7 +16,7 @@ export function TodoActions() {
   }
 
   const renderForm = (props: FormikProps<FormValues>) => (
-    <Form>
+    <Form style={{ display: 'inline-block' }}>
       <Field name="newTodoText" type="text" placeholder="What should be done?" />{' '}
       <button type="submit">Add Todo</button>
     </Form>
@@ -24,12 +24,18 @@ export function TodoActions() {
 
   return (
     <StoreConsumer>
-      {(state, dispatch) => (
-        <Formik
-          initialValues={{ newTodoText: '' }}
-          onSubmit={handleSubmit(dispatch)}
-          render={renderForm}
-        />
+      {(_, dispatch) => (
+        <>
+          <Formik
+            initialValues={{ newTodoText: '' }}
+            onSubmit={handleSubmit(dispatch)}
+            render={renderForm}
+          />
+
+          <button onClick={() => dispatch({ type: 'CLEAR_FINISHED_TODOS' })}>
+            Clear Finished Todos
+          </button>
+        </>
       )}
     </StoreConsumer>
   )
