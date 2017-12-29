@@ -12,7 +12,7 @@ export function Todo({ todo }: Props) {
 
   return (
     <StoreConsumer>
-      {(_, dispatch) => (
+      {({ dispatch }) => (
         <li style={style}>
           <input
             type="checkbox"

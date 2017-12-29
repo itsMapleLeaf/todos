@@ -24,7 +24,7 @@ export function TodoActions() {
 
   return (
     <StoreConsumer>
-      {(_, dispatch) => (
+      {({ dispatch }) => (
         <>
           <Formik
             initialValues={{ newTodoText: '' }}

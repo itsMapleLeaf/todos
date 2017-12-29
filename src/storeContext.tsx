@@ -7,11 +7,18 @@ import { TodoState } from './todos/types'
 const { Provider, Consumer } = createReactContext(store)
 
 type StoreConsumerProps = {
-  children: (state: TodoState, dispatch: Dispatch) => React.ReactNode
+  children: (props: { state: TodoState; dispatch: Dispatch }) => React.ReactNode
 }
 
 export const StoreConsumer = (props: StoreConsumerProps) => (
-  <Consumer>{store => props.children(store.getState(), store.dispatch)}</Consumer>
+  <Consumer>
+    {store =>
+      props.children({
+        state: store.getState(),
+        dispatch: store.dispatch,
+      })
+    }
+  </Consumer>
 )
 
 export { Provider as StoreProvider }
