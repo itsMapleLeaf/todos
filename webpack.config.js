@@ -1,5 +1,9 @@
 const webpack = require('webpack')
 const UglifyPlugin = require('uglifyjs-webpack-plugin')
+const { resolve } = require('path')
+
+const sourcePath = resolve(__dirname, 'src')
+const buildPath = resolve(__dirname, 'build')
 
 module.exports = env => {
   const config = {
@@ -8,10 +12,16 @@ module.exports = env => {
     },
     output: {
       filename: '[name].bundle.js',
-      path: __dirname + '/build',
+      path: buildPath,
     },
     module: {
-      rules: [{ loader: 'ts-loader', test: /\.tsx?$/ }],
+      rules: [
+        {
+          loader: 'ts-loader',
+          test: /\.tsx?$/,
+          include: [sourcePath],
+        },
+      ],
     },
     resolve: {
       extensions: ['.js', '.ts', '.tsx'],
