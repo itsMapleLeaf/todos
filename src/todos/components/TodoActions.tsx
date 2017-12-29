@@ -4,7 +4,7 @@ import * as React from 'react'
 import { Dispatch } from '../../store'
 import { StoreConsumer } from '../../storeContext'
 
-export function NewTodoForm() {
+export function TodoActions() {
   type FormValues = { newTodoText: string }
 
   const handleSubmit = (dispatch: Dispatch) => (
