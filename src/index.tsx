@@ -2,6 +2,7 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 
 import { App } from './App'
+import { applyGlobalStyles } from './globalStyles'
 import { dispatch, store } from './store'
 import { StoreProvider } from './storeContext'
 
@@ -17,6 +18,7 @@ function render() {
 
 render()
 store.subscribe(render)
+applyGlobalStyles()
 
 if (module.hot) {
   module.hot.accept('./App', render)
