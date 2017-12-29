@@ -1,7 +1,6 @@
 import immer from 'immer'
 
-import { TodoAction } from './actions'
-import { TodoModel, TodoState } from './models'
+import { TodoAction, TodoModel, TodoState } from './types'
 
 export function todosReducer(prevState: TodoState, action: TodoAction): TodoState {
   return immer(prevState, state => {

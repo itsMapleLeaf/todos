@@ -1,8 +1,7 @@
 import { createStore } from 'redux'
 
-import { TodoAction } from './todos/actions'
-import { TodoState } from './todos/models'
 import { todosReducer } from './todos/reducer'
+import { TodoAction, TodoState } from './todos/types'
 
 export const store = createStore(todosReducer, new TodoState())
 export const dispatch: Dispatch = store.dispatch

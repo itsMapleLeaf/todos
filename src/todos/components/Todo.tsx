@@ -1,7 +1,7 @@
 import * as React from 'react'
 
 import { StoreConsumer } from '../../storeContext'
-import { TodoModel } from '../models'
+import { TodoModel } from '../types'
 
 type Props = {
   todo: TodoModel
