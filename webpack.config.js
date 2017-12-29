@@ -1,11 +1,17 @@
 const webpack = require('webpack')
 const UglifyPlugin = require('uglifyjs-webpack-plugin')
 const { resolve } = require('path')
+const HtmlPlugin = require('html-webpack-plugin')
 
 const sourcePath = resolve(__dirname, 'src')
 const buildPath = resolve(__dirname, 'build')
 
-module.exports = env => {
+module.exports = (env = {}) => {
+  const html = new HtmlPlugin({
+    template: './index.html',
+    chunksSortMode: 'dependency',
+  })
+
   const config = {
     entry: {
       app: './src/index',
@@ -26,12 +32,14 @@ module.exports = env => {
     resolve: {
       extensions: ['.js', '.ts', '.tsx'],
     },
-    plugins: [new webpack.NamedModulesPlugin()],
+    plugins: [html, new webpack.NamedModulesPlugin()],
     devtool: 'eval-source-map',
   }
 
   if (env.production) {
     config.plugins = [
+      html,
+
       new webpack.DefinePlugin({
         'process.env.NODE_ENV': `"production"`,
       }),
