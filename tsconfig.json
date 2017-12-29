@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "strict": true,
+    "strictFunctionTypes": false
+  },
+  "include": [
+    "./src/**/*",
+    "./typings/**/*",
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "mobdux",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server --inline --hot"
+  },
+  "dependencies": {
+    "formik": "^0.10.5",
+    "immer": "^0.0.3",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "redux": "^3.7.2"
+  },
+  "devDependencies": {
+    "@types/react": "^16.0.31",
+    "@types/react-dom": "^16.0.3",
+    "@types/webpack-env": "^1.13.3",
+    "ts-loader": "^3.2.0",
+    "typescript": "^2.6.2",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.7"
+  }
+}
