@@ -8,7 +8,7 @@ type Props = {
 }
 
 export function Todo({ todo }: Props) {
-  const style = { textDecoration: todo.done ? 'line-through' : undefined }
+  const style = todo.done ? { textDecoration: 'line-through', opacity: 0.5 } : {}
 
   return (
     <StoreConsumer>
