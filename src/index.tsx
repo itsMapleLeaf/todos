@@ -1,9 +1,9 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 
+import { App } from './App'
 import { dispatch, store } from './store'
 import { StoreProvider } from './storeContext'
-import { App } from './todos/components/App'
 
 function render() {
   const root = (
@@ -19,7 +19,7 @@ render()
 store.subscribe(render)
 
 if (module.hot) {
-  module.hot.accept('./todos/components/App', render)
+  module.hot.accept('./App', render)
 }
 
 dispatch({ type: 'ADD_TODO', text: 'do a thing' })
