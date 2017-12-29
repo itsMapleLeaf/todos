@@ -6,6 +6,7 @@ import { Todo } from './Todo'
 type Props = {
   todos: TodoModel[]
   onToggle: (id: TodoModel['id']) => void
+  onRemove: (id: TodoModel['id']) => void
 }
 
 export function TodoList(props: Props) {
@@ -13,7 +14,11 @@ export function TodoList(props: Props) {
     <ul>
       {props.todos.map(todo => (
         <li key={todo.id}>
-          <Todo todo={todo} onToggle={() => props.onToggle(todo.id)} />
+          <Todo
+            todo={todo}
+            onToggle={() => props.onToggle(todo.id)}
+            onRemove={() => props.onRemove(todo.id)}
+          />
         </li>
       ))}
     </ul>

@@ -10,6 +10,7 @@ export function TodoList() {
         <TodoListComponent
           todos={state.todos}
           onToggle={id => dispatch({ type: 'TOGGLE_TODO', id })}
+          onRemove={id => dispatch({ type: 'REMOVE_TODO', id })}
         />
       )}
     </StoreConsumer>
