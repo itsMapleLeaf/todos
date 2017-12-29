@@ -1,11 +1,12 @@
 import * as React from 'react'
 
-import { Dispatch } from '../../store'
-import { TodoModel } from '../models'
+import { StoreConsumer } from '../../storeContext'
 import { Todo } from './Todo'
 
-export function TodoList(props: { todos: TodoModel[]; dispatch: Dispatch }) {
+export function TodoList() {
   return (
-    <ul>{props.todos.map(todo => <Todo key={todo.id} todo={todo} dispatch={props.dispatch} />)}</ul>
+    <StoreConsumer>
+      {state => <ul>{state.todos.map(todo => <Todo todo={todo} key={todo.id} />)}</ul>}
+    </StoreConsumer>
   )
 }

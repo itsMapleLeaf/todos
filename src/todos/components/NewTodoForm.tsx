@@ -2,15 +2,17 @@ import { Field, Form, Formik, FormikActions, FormikProps } from 'formik'
 import * as React from 'react'
 
 import { Dispatch } from '../../store'
+import { StoreConsumer } from '../../storeContext'
 
-type Props = { dispatch: Dispatch }
-
-export function NewTodoForm(props: Props) {
+export function NewTodoForm() {
   type FormValues = { newTodoText: string }
 
-  const handleSubmit = (values: FormValues, actions: FormikActions<FormValues>) => {
+  const handleSubmit = (dispatch: Dispatch) => (
+    values: FormValues,
+    actions: FormikActions<FormValues>,
+  ) => {
     actions.setFieldValue('newTodoText', '')
-    props.dispatch({ type: 'ADD_TODO', text: values.newTodoText })
+    dispatch({ type: 'ADD_TODO', text: values.newTodoText })
   }
 
   const renderForm = (props: FormikProps<FormValues>) => (
@@ -20,5 +22,15 @@ export function NewTodoForm(props: Props) {
     </Form>
   )
 
-  return <Formik initialValues={{ newTodoText: '' }} onSubmit={handleSubmit} render={renderForm} />
+  return (
+    <StoreConsumer>
+      {(state, dispatch) => (
+        <Formik
+          initialValues={{ newTodoText: '' }}
+          onSubmit={handleSubmit(dispatch)}
+          render={renderForm}
+        />
+      )}
+    </StoreConsumer>
+  )
 }

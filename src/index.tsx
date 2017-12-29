@@ -2,13 +2,17 @@ import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 
 import { dispatch, store } from './store'
+import { StoreProvider } from './storeContext'
 import { App } from './todos/components/App'
 
 function render() {
-  ReactDOM.render(
-    <App state={store.getState()} dispatch={store.dispatch} />,
-    document.getElementById('root'),
+  const root = (
+    <StoreProvider value={store}>
+      <App />
+    </StoreProvider>
   )
+
+  ReactDOM.render(root, document.getElementById('root'))
 }
 
 render()

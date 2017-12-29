@@ -1,24 +1,27 @@
 import * as React from 'react'
 
-import { Dispatch } from '../../store'
+import { StoreConsumer } from '../../storeContext'
 import { TodoModel } from '../models'
 
 type Props = {
   todo: TodoModel
-  dispatch: Dispatch
 }
 
-export function Todo({ todo, ...props }: Props) {
+export function Todo({ todo }: Props) {
   const style = { textDecoration: todo.done ? 'line-through' : undefined }
 
   return (
-    <li style={style}>
-      <input
-        type="checkbox"
-        checked={todo.done}
-        onInput={() => props.dispatch({ type: 'TOGGLE_TODO', id: todo.id })}
-      />
-      {todo.text}
-    </li>
+    <StoreConsumer>
+      {(_, dispatch) => (
+        <li style={style}>
+          <input
+            type="checkbox"
+            checked={todo.done}
+            onInput={() => dispatch({ type: 'TOGGLE_TODO', id: todo.id })}
+          />
+          {todo.text}
+        </li>
+      )}
+    </StoreConsumer>
   )
 }
