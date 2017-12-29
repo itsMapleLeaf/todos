@@ -19,7 +19,7 @@ render()
 store.subscribe(render)
 
 if (module.hot) {
-  module.hot.accept('./components/App', render)
+  module.hot.accept('./todos/components/App', render)
 }
 
 dispatch({ type: 'ADD_TODO', text: 'do a thing' })
