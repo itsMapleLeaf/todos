@@ -1,12 +1,21 @@
 import * as React from 'react'
 
-import { StoreConsumer } from '../../app/storeContext'
+import { TodoModel } from '../types'
 import { Todo } from './Todo'
 
-export function TodoList() {
+type Props = {
+  todos: TodoModel[]
+  onToggle: (id: TodoModel['id']) => void
+}
+
+export function TodoList(props: Props) {
   return (
-    <StoreConsumer>
-      {({ state }) => <ul>{state.todos.map(todo => <Todo todo={todo} key={todo.id} />)}</ul>}
-    </StoreConsumer>
+    <ul>
+      {props.todos.map(todo => (
+        <li key={todo.id}>
+          <Todo todo={todo} onToggle={() => props.onToggle(todo.id)} />
+        </li>
+      ))}
+    </ul>
   )
 }

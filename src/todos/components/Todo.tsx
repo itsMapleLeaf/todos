@@ -1,29 +1,19 @@
 import * as React from 'react'
 
-import { StoreConsumer } from '../../app/storeContext'
 import { TodoModel } from '../types'
 
 type Props = {
   todo: TodoModel
+  onToggle: () => void
 }
 
-export function Todo({ todo }: Props) {
+export function Todo({ todo, onToggle }: Props) {
   const style = todo.done ? { textDecoration: 'line-through', opacity: 0.5 } : {}
 
   return (
-    <StoreConsumer>
-      {({ dispatch }) => (
-        <li style={style}>
-          <label>
-            <input
-              type="checkbox"
-              checked={todo.done}
-              onInput={() => dispatch({ type: 'TOGGLE_TODO', id: todo.id })}
-            />
-            {todo.text}
-          </label>
-        </li>
-      )}
-    </StoreConsumer>
+    <label style={style}>
+      <input type="checkbox" checked={todo.done} onInput={() => onToggle()} />
+      {todo.text}
+    </label>
   )
 }
