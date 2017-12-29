@@ -14,12 +14,14 @@ export function Todo({ todo }: Props) {
     <StoreConsumer>
       {({ dispatch }) => (
         <li style={style}>
-          <input
-            type="checkbox"
-            checked={todo.done}
-            onInput={() => dispatch({ type: 'TOGGLE_TODO', id: todo.id })}
-          />
-          {todo.text}
+          <label>
+            <input
+              type="checkbox"
+              checked={todo.done}
+              onInput={() => dispatch({ type: 'TOGGLE_TODO', id: todo.id })}
+            />
+            {todo.text}
+          </label>
         </li>
       )}
     </StoreConsumer>
