@@ -3,18 +3,7 @@ import * as React from 'react'
 import { StoreConsumer } from '../../app/storeContext'
 import { Todo } from '../components/Todo'
 import { TodoList as TodoListComponent } from '../components/TodoList'
-import { TodoFilter, TodoState } from '../types'
-
-function getFilteredTodos(state: TodoState) {
-  switch (state.filter) {
-    case TodoFilter.all:
-      return state.todos
-    case TodoFilter.completed:
-      return state.todos.filter(t => t.done)
-    case TodoFilter.notCompleted:
-      return state.todos.filter(t => !t.done)
-  }
-}
+import { getFilteredTodos } from '../selectors'
 
 export function TodoList() {
   return (
