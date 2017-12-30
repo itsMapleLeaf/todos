@@ -1,26 +1,9 @@
 import * as React from 'react'
 
-import { TodoModel } from '../types'
-import { Todo } from './Todo'
-
 type Props = {
-  todos: TodoModel[]
-  onToggle: (id: TodoModel['id']) => void
-  onRemove: (id: TodoModel['id']) => void
+  children: React.ReactNode
 }
 
 export function TodoList(props: Props) {
-  return (
-    <ul>
-      {props.todos.map(todo => (
-        <li key={todo.id}>
-          <Todo
-            todo={todo}
-            onToggle={() => props.onToggle(todo.id)}
-            onRemove={() => props.onRemove(todo.id)}
-          />
-        </li>
-      ))}
-    </ul>
-  )
+  return <ul>{React.Children.map(props.children, child => <li>{child}</li>)}</ul>
 }
