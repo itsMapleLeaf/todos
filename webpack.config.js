@@ -44,11 +44,6 @@ module.exports = (env = {}) => {
         'process.env.NODE_ENV': `"production"`,
       }),
 
-      new webpack.optimize.CommonsChunkPlugin({
-        name: 'lib',
-        minChunks: ({ resource }) => resource && resource.includes('node_modules'),
-      }),
-
       new webpack.optimize.ModuleConcatenationPlugin(),
 
       new UglifyPlugin({
