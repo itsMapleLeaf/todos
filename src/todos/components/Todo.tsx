@@ -15,7 +15,7 @@ export function Todo({ todo, ...props }: Props) {
     <span style={style}>
       <button onClick={() => props.onRemove()}>X</button>
       <label>
-        <input type="checkbox" checked={todo.done} onInput={() => props.onToggle()} />
+        <input type="checkbox" checked={todo.done} onChange={() => props.onToggle()} />
         {todo.text}
       </label>
     </span>

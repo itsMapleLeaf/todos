@@ -22,5 +22,9 @@ export function todosReducer(prevState: TodoState, action: TodoAction): TodoStat
     if (action.type === 'REMOVE_TODO') {
       state.todos = state.todos.filter(t => t.id !== action.id)
     }
+
+    if (action.type === 'SET_TODO_FILTER') {
+      state.filter = action.filter
+    }
   })
 }

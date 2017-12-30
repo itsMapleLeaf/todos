@@ -8,6 +8,7 @@ export function App() {
     <>
       <h1>awesome todo app</h1>
       <TodoActions />
+      <hr />
       <TodoList />
     </>
   )
